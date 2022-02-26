@@ -30,6 +30,8 @@
 #Gradle temporary files
 target/
 .mvn/
+.gradle/
+kotlin-4-devs-java/build/
 
 #Eclipse files
 **/.project
