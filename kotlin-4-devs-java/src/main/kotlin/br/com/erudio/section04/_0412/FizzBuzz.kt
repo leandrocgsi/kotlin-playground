@@ -1,4 +1,4 @@
-package br.com.erudio
+package br.com.erudio.section04._0412
 
 fun fizzBuzz1(n: Int): List<String> {
 
