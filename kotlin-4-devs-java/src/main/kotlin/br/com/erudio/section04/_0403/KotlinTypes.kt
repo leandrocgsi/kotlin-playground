@@ -1,4 +1,4 @@
-package br.com.erudio
+package br.com.erudio.section04._0403
 
 fun main(args: Array<String>) {
 
@@ -16,6 +16,9 @@ fun main(args: Array<String>) {
     val myInt = 199
     val myShort: Short = 12
     var myByte: Byte = -128
+
+    val aLongNumber = 123_456_789
+    val theSameNumber = 123456789
 
     val anInt: Int = 7
     val aLong: Long = anInt.toLong()
