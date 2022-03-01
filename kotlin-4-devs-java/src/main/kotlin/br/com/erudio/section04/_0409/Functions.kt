@@ -1,4 +1,4 @@
-package br.com.erudio
+package br.com.erudio.section04._0409
 
 fun main() {
     println("10 + 20 = ${myMathFunction(10, 20)}")
