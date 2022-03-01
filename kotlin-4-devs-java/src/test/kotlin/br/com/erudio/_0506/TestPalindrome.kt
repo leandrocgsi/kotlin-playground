@@ -1,5 +1,6 @@
-package br.com.erudio
+package br.com.erudio._0506
 
+import br.com.erudio.section05._0507.isPalindrome
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
