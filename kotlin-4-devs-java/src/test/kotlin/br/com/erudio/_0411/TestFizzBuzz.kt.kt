@@ -1,5 +1,6 @@
-package br.com.erudio
+package br.com.erudio._0411
 
+import br.com.erudio.fizzBuzz
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
