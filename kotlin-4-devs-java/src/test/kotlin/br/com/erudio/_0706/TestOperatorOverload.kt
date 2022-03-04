@@ -1,6 +1,6 @@
-package br.com.erudio._0707
+package br.com.erudio._0706
 
-import br.com.erudio.section07._0708.Coordinates
+import br.com.erudio.section07._0707.Coordinates
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TestOperatorOverload {
 
-    /*
     operator fun plus(other: Coordinates) : Coordinates {
         TODO("not implemented")
     }
@@ -17,7 +16,6 @@ class TestOperatorOverload {
     operator fun minus (other: Coordinates) : Coordinates {
         TODO("not implemented")
     }
-    */
 
     lateinit var p1: Coordinates
     lateinit var p2: Coordinates
