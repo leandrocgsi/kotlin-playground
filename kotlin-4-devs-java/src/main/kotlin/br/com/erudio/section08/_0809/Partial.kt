@@ -1,17 +1,12 @@
 package br.com.erudio.section08._0809
 
-import org.funktionale.composition.compose
-import org.funktionale.composition.forwardCompose
-import org.funktionale.memoization.memoize
+import org.funktionale.partials.partially1
+import org.funktionale.partials.partially3
 
 fun main() {
-    val add5 = {i: Int -> i + 5}
-    val multiplyBy2 = {i: Int -> i * 2}
-    val multiplyBy2andAdd5 = add5 compose multiplyBy2
-    val composeResult = multiplyBy2andAdd5(10)
-    println("multiplyBy2andAdd5(10) = $composeResult")
-
-    val add5AndMultiplyBy2 = add5 forwardCompose multiplyBy2
-    val forwardComposeResult = add5AndMultiplyBy2(10)
-    println("add5AndMultiplyBy2(10) = $forwardComposeResult")
+    val prefixAndPostfix: (String, String, String) -> String =
+        {prefix: String, x: String, postfix: String -> "${prefix}${x}${postfix}"}
+    val prefixAndAlert: (String, String) -> String = prefixAndPostfix.partially3("!")
+    val hello: (String) -> String = prefixAndAlert.partially1("Hello, ")
+    println(hello("Funktionale"))
 }
