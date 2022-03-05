@@ -1,12 +1,6 @@
 package br.com.erudio.section08._0805
 
-import br.com.erudio.section08._0803.getStudents
-
 fun main() {
-    sequences()
-}
-
-fun sequences() {
     val students = getStudents()
     val sqStudents = students.drop(1).take(3).toList()
     println("Sequenced Students: $sqStudents")
