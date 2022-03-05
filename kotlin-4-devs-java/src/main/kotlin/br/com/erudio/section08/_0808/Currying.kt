@@ -1,20 +1,10 @@
 package br.com.erudio.section08._0808
 
-import org.funktionale.composition.compose
-import org.funktionale.composition.forwardCompose
+import org.funktionale.currying.curried
 
 fun main() {
-    functional()
-}
-
-fun functional() {
-    val add5 = {i: Int -> i + 5}
-    val multiplyBy2 = {i: Int -> i * 2}
-    val multiplyBy2andAdd5 = add5 compose multiplyBy2
-    val composeResult = multiplyBy2andAdd5(10)
-    println("multiplyBy2andAdd5(10) = $composeResult")
-
-    val add5AndMultiplyBy2 = add5 forwardCompose multiplyBy2
-    val forwardComposeResult = add5AndMultiplyBy2(10)
-    println("add5AndMultiplyBy2(10) = $forwardComposeResult")
+    val sum3ints = {x: Int, y: Int, z: Int -> x + y + z}
+    val curried: (Int) -> (Int) -> (Int) -> Int = sum3ints.curried()
+    val curriedResult = curried(2)(4)(6)
+    println("curried(2)(4)(6) = $curriedResult")
 }
