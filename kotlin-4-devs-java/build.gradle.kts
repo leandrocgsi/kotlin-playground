@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+    // https://www.baeldung.com/kotlin/arrow
     implementation("org.funktionale:funktionale-all:1.2")
     // implementation("io.arrow-kt:arrow-core:1.0.1")
     runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.6.10")
