@@ -14,5 +14,12 @@ public class HelloKotlinFromJava {
 
         Integer maxInt = MaxKt.max(2001, 2022);
         System.out.println("The max value is " + maxInt);
+
+        // The classic for statement
+        for(int i=0; i < 10; i++) {
+            // Do something here
+        }
+
+        // This doesn't exist in Kotlin
     }
 }
