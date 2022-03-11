@@ -28,6 +28,9 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("mysql:mysql-connector-java")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.testcontainers:mysql:1.16.3")
+	testImplementation("io.rest-assured:rest-assured:4.5.0")
+	testImplementation("org.mockito:mockito-core")
 }
 
 tasks.withType<KotlinCompile> {

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.restassured.RestAssured.given
 import io.restassured.builder.RequestSpecBuilder
+import io.restassured.common.mapper.TypeRef
 import io.restassured.filter.log.LogDetail
 import io.restassured.filter.log.RequestLoggingFilter
 import io.restassured.filter.log.ResponseLoggingFilter
@@ -21,7 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestMethodOrder(OrderAnnotation::class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PersonControllerJsonTest : AbstractIntegrationTest() {
+class PersonControllerTest : AbstractIntegrationTest() {
 
     private var specification: RequestSpecification? = null
     private var objectMapper: ObjectMapper? = null
@@ -69,7 +70,7 @@ class PersonControllerJsonTest : AbstractIntegrationTest() {
         assertNotNull(createdPerson.lastName)
         assertNotNull(createdPerson.address)
         assertNotNull(createdPerson.gender)
-        assertTrue(createdPerson.id!! > 0)
+        assertTrue(createdPerson.id > 0)
         assertEquals("Richard", createdPerson.firstName)
         assertEquals("Stallman", createdPerson.lastName)
         assertEquals("New York City, New York, US", createdPerson.address)
@@ -156,37 +157,31 @@ class PersonControllerJsonTest : AbstractIntegrationTest() {
                 .statusCode(200)
                     .extract()
                     .body()
-                        .asString()
+                        .`as`(object : TypeRef<java.util.List<Person?>?>() {})
 
-        /*
-        val wrapper = objectMapper!!.readValue(content, List<Person>::class.java)
-        val people = wrapper.embedded!!.persons
-
-        val foundPersonOne = people?.get(0)
+        val foundPersonOne = content?.get(0)
         assertNotNull(foundPersonOne!!.id)
         assertNotNull(foundPersonOne.firstName)
         assertNotNull(foundPersonOne.lastName)
         assertNotNull(foundPersonOne.address)
         assertNotNull(foundPersonOne.gender)
-        assertEquals(964, foundPersonOne.id)
-        assertEquals("Ardath", foundPersonOne.firstName)
-        assertEquals("Leckenby", foundPersonOne.lastName)
-        assertEquals("9 Chive Trail", foundPersonOne.address)
-        assertEquals("Female", foundPersonOne.gender)
-        assertEquals(true, foundPersonOne.enabled)
+        assertEquals(1, foundPersonOne.id)
+        assertEquals("Leandro", foundPersonOne.firstName)
+        assertEquals("Costa", foundPersonOne.lastName)
+        assertEquals("Uberlândia - Minas Gerais - Brasil", foundPersonOne.address)
+        assertEquals("Male", foundPersonOne.gender)
 
-        val foundPersonSeven = people[6]
-        assertNotNull(foundPersonSeven.id)
-        assertNotNull(foundPersonSeven.firstName)
-        assertNotNull(foundPersonSeven.lastName)
-        assertNotNull(foundPersonSeven.address)
-        assertNotNull(foundPersonSeven.gender)
-        assertEquals(189, foundPersonSeven.id)
-        assertEquals("Arlena", foundPersonSeven.firstName)
-        assertEquals("Wagenen", foundPersonSeven.lastName)
-        assertEquals("1 Spaight Parkway", foundPersonSeven.address)
-        assertEquals("Female", foundPersonSeven.gender)
-        */
+        val foundPersonSix = content?.get(5)
+        assertNotNull(foundPersonSix!!.id)
+        assertNotNull(foundPersonSix.firstName)
+        assertNotNull(foundPersonSix.lastName)
+        assertNotNull(foundPersonSix.address)
+        assertNotNull(foundPersonSix.gender)
+        assertEquals(9, foundPersonSix.id)
+        assertEquals("Marcos", foundPersonSix.firstName)
+        assertEquals("Paulo", foundPersonSix.lastName)
+        assertEquals("Patos de Minas - Minas Gerais - Brasil", foundPersonSix.address)
+        assertEquals("Male", foundPersonSix.gender)
     }
 
     private fun mockPerson() {

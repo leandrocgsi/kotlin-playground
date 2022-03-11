@@ -28,6 +28,6 @@ class PersonController {
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") id: Long): ResponseEntity<*> {
         service!!.delete(id)
-        return ResponseEntity.ok().build<Any>()
+        return ResponseEntity.noContent().build<Any>()
     }
 }
