@@ -46,7 +46,7 @@ class PersonServicesTest {
     fun testFindAll() {
 
         val list: List<Person> = input!!.mockEntityList()
-        `when`(repository!!.findAll()).thenReturn(list)
+        `when`(repository?.findAll()).thenReturn(list)
 
         val persons = service!!.findAll()
 
@@ -85,7 +85,7 @@ class PersonServicesTest {
     fun testFindById() {
         val person = input!!.mockEntity(1)
         person.id = 1L
-        `when`(repository!!.findById(1L)).thenReturn(Optional.of(person))
+        `when`(repository?.findById(1L)).thenReturn(Optional.of(person))
         val result = service!!.findById(1L)
         assertNotNull(result)
         assertNotNull(result!!.id)
@@ -102,7 +102,7 @@ class PersonServicesTest {
         val persisted = entity.copy()
         persisted.id = 1L
 
-        `when`(repository!!.save(entity)).thenReturn(persisted)
+        `when`(repository?.save(entity)).thenReturn(persisted)
         val result = service!!.create(entity)
 
         assertNotNull(result)
@@ -132,8 +132,8 @@ class PersonServicesTest {
         val persisted = entity.copy()
         persisted.id = 1L
 
-        `when`(repository!!.findById(1L)).thenReturn(Optional.of(entity))
-        `when`(repository!!.save(entity)).thenReturn(persisted)
+        `when`(repository?.findById(1L)).thenReturn(Optional.of(entity))
+        `when`(repository?.save(entity)).thenReturn(persisted)
 
         val result = service!!.update(entity)
 
@@ -160,7 +160,7 @@ class PersonServicesTest {
     fun testDelete() {
         val person = input!!.mockEntity(1)
         person.id = 1L
-        `when`(repository!!.findById(1L)).thenReturn(Optional.of(person))
+        `when`(repository?.findById(1L)).thenReturn(Optional.of(person))
         service!!.delete(1L)
     }
 }
