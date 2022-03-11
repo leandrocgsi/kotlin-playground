@@ -1,25 +1,24 @@
 package br.com.erudio.model
 
 import jakarta.persistence.*
-import java.io.Serializable
 
 @Entity
 @Table(name = "person")
-class Person : Serializable {
+data class Person (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
+    var id: Long = 0,
 
     @Column(name = "first_name", nullable = false, length = 80)
-    var firstName: String? = null
+    var firstName: String = "",
 
     @Column(name = "last_name", nullable = false, length = 80)
-    var lastName: String? = null
+    var lastName: String = "",
 
     @Column(nullable = false, length = 100)
-    var address: String? = null
+    var address: String = "",
 
     @Column(nullable = false, length = 6)
-    var gender: String? = null
-}
+    var gender: String = ""
+)
