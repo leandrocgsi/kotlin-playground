@@ -37,7 +37,7 @@ class PersonControllerTest : AbstractIntegrationTest() {
 
     @Test
     @Order(1)
-    fun authorization() {
+    fun postSetup() {
         specification = RequestSpecBuilder()
             .setBasePath("/person")
             .setPort(TestsConfig.SERVER_PORT)
@@ -52,15 +52,15 @@ class PersonControllerTest : AbstractIntegrationTest() {
     fun testCreate() {
         mockPerson()
         val content: String = given().spec(specification)
-            .contentType(TestsConfig.CONTENT_TYPE_JSON)
-            .body(person)
-            .`when`()
-            .post()
-            .then()
-            .statusCode(200)
-            .extract()
-            .body()
-            .asString()
+                .contentType(TestsConfig.CONTENT_TYPE_JSON)
+                .body(person)
+                .`when`()
+                    .post()
+                .then()
+                    .statusCode(200)
+                .extract()
+                    .body()
+                .asString()
 
         val createdPerson = objectMapper!!.readValue(content, Person::class.java)
 
@@ -71,6 +71,7 @@ class PersonControllerTest : AbstractIntegrationTest() {
         assertNotNull(createdPerson.address)
         assertNotNull(createdPerson.gender)
         assertTrue(createdPerson.id > 0)
+
         assertEquals("Richard", createdPerson.firstName)
         assertEquals("Stallman", createdPerson.lastName)
         assertEquals("New York City, New York, US", createdPerson.address)
