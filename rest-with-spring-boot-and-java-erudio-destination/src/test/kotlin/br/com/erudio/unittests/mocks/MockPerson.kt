@@ -1,13 +1,10 @@
 package br.com.erudio.unittests.mocks
 
-import java.util.ArrayList
 import br.com.erudio.model.Person
 
 class MockPerson {
 
-    fun mockEntity(): Person {
-        return mockEntity(0)
-    }
+    fun mockEntity(): Person = mockEntity(0)
 
     fun mockEntityList(): ArrayList<Person> {
         val persons: ArrayList<Person> = ArrayList<Person>()
